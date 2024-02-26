@@ -33,7 +33,7 @@ ML engineering tutorial.
    3. Send data to the server to query the model:
 
        ```bash
-       curl -X POST -H "Content-Type: application/json" 127.0.0.1:5000/predict -d @artifacts/data/X.json
+       curl -X POST -H "Content-Type: application/json" localhost:8080/predict -d @artifacts/data/X.json
        ```
 
 3. Version the dataset and models:
@@ -47,11 +47,19 @@ ML engineering tutorial.
       3. In DVC adding does staging and committing together
       4. Follow the instructions to Git track these changes
    6. Push the data changes to your remote: `dvc push`
-4. Make a change to the dataset:
-   1. Change the `random_state` in `scripts/build/dataset.py` then rerun the build script: `deactivate && source .venv-build/bin/activate && python -m scripts.build`
-   2. Track the changes:
-      1. `dvc add artifacts/data/X.json artifacts/data/y.json`
-      2. `dvc add artifacts/models/model.joblib`
-      3. Follow Git instructions
-5. Play with `playground.ipynb`, changing the git SHAs to retrieve different file versions.
-6.
+   7. Make a change to the dataset:
+      1. Change the `random_state` in `scripts/build/dataset.py` then rerun the build script: `deactivate && source .venv-build/bin/activate && python -m scripts.build`
+      2. Track the changes:
+         1. `dvc add artifacts/data/X.json artifacts/data/y.json`
+         2. `dvc add artifacts/models/model.joblib`
+         3. Follow Git instructions
+   8. Play with `playground.ipynb`, changing the git SHAs to retrieve different file versions.
+4. Dockering
+   1. Build the building image:
+      1. `docker build -t ml-serving-build:v0 -f scripts/build/Dockerfile .`
+   2. Run the building image:
+      1. `docker run -v ~/PATH/TO/ml-serving/docker-artifacts:/home/user/workdir/artifacts ml-serving-build:v0`
+   3. Build the serving image:
+      1. `docker build -t ml-serving-serve:v0 -f scripts/serve/Dockerfile .`
+   4. Run the serving image:
+      1. `docker run -v ~/PATH/TO/ml-serving/docker-artifacts:/home/user/workdir/artifacts -p 8080:8080 ml-serving-serve:v0`
