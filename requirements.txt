@@ -1,4 +1,4 @@
-dvc
+dvc[gdrive]
 black
 isort
 pre-commit
