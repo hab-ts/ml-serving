@@ -20,5 +20,3 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
       - id: end-of-file-fixer
-      - id: no-commit-to-branch
-        args: [-b, master, -b, dev]
