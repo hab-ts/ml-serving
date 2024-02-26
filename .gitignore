@@ -11,29 +11,5 @@
 # environments
 *.venv*
 
-# mlflow
-**/mlruns
-
-# tests
-**.pytest_cache
-**.coverage
-**.tox
-
-# builds
-/build
-*.egg-info
-/dist
-
-# docs
-docs/build
-docs/source/bill-of-materials
-docs/source/python-api
-docs/source/test-report
-src/pytidal/.python-version
-src/pytidal/requirements.txt
-
 # secret credentials
 **secret_credentials.json
-
-# artifacts
-**artifacts
