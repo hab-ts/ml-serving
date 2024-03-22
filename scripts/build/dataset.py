@@ -10,6 +10,7 @@ logger.setLevel(logging.INFO)
 
 
 def main():
+    logger.info("Making dataset.")
     X, y = make_classification(
         n_samples=10,
         n_features=3,
@@ -19,8 +20,11 @@ def main():
         random_state=0,
     )
 
+    logger.info("Saving X.")
     with open(X_PATH, "w") as file:
         json.dump(X.tolist(), file)
+
+    logger.info("Saving y.")
     with open(Y_PATH, "w") as file:
         json.dump(y.tolist(), file)
 
