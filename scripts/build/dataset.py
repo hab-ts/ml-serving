@@ -17,7 +17,7 @@ def main():
         n_informative=2,
         n_redundant=1,
         n_classes=2,
-        random_state=0,
+        random_state=1,
     )
 
     logger.info("Saving X.")
