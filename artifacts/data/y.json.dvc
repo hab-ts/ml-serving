@@ -1,0 +1,5 @@
+outs:
+- md5: 0132a2d64ae9b37186f6fe31f22a8c09
+  size: 30
+  hash: md5
+  path: y.json
